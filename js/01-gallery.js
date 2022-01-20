@@ -37,10 +37,9 @@ function onPictureClick(e) {
 
 // делаем закрытие по Esc
     document.addEventListener('keydown', event => {
-if (event.code === 'Escape') {
-
+        if (event.code === 'Escape') {
     instance.close();
-}
+        } 
 });
 } 
 
