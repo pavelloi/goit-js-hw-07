@@ -22,12 +22,15 @@ function createPictureMarkup(pictures) {
     return markup;
 } 
 
-
 function onPictureClick(e) {
     e.preventDefault();
-    if (!e.target.classList.contains('gallery-image')) {
+    if (!e.target.classList.contains('gallery__image')) {
         return;
     }
-    console.log(e.target);
+    const originalPictureUrl = e.target.dataset.source;
+    const instance = basicLightbox.create(`
+    <img src="${originalPictureUrl}" width="1280">
+`)
+instance.show()
 } 
 
