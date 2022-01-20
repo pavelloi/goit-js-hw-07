@@ -28,9 +28,20 @@ function onPictureClick(e) {
         return;
     }
     const originalPictureUrl = e.target.dataset.source;
+
+    // делаем модалку и не даём ей закрываться с помощью мышки
     const instance = basicLightbox.create(`
     <img src="${originalPictureUrl}" width="1280">
-`)
-instance.show()
+`, {closable: false})
+    instance.show();
+
+// делаем закрытие по Esc
+    document.addEventListener('keydown', event => {
+if (event.code === 'Escape') {
+
+    instance.close();
+}
+});
 } 
+
 
