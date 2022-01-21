@@ -29,10 +29,11 @@ function onPictureClick(e) {
     }
     const originalPictureUrl = e.target.dataset.source;
 
-    // делаем модалку и не даём ей закрываться с помощью мышки
+    // делаем модалку и не даём ей закрываться с помощью мышки. 
+    // Если closable поставить false - закрываться будет только по Esc
     const instance = basicLightbox.create(`
     <img src="${originalPictureUrl}" width="1280">
-`, {closable: false})
+`, {closable: true}) 
     instance.show();
 
 // делаем закрытие по Esc
