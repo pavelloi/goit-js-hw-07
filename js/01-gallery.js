@@ -26,28 +26,27 @@ function onPictureClick(e) {
     e.preventDefault();
     if (!e.target.classList.contains('gallery__image')) {
         return;
-    }
+    };
     const originalPictureUrl = e.target.dataset.source;
 
   
     const instance = basicLightbox.create(`
     <img src="${originalPictureUrl}" width="1280">`,
         {
-        onShow: (instance) => {window.addEventListener("keydown", event => {
-            if (event.code === 'Escape') {
-                instance.close();
-            }
-        })
+            onShow: () => {
+                window.addEventListener("keydown", closeByEscButton)
             },
-            
-        onClose: (instance) => {window.removeEventListener("keydown", event => {
-            if (event.code === 'Escape') {
-                instance.close();
-        } 
-});
-},
-    });    
-
+            onClose: () => {
+                window.removeEventListener("keydown", closeByEscButton);
+            },
+        });  
+    
+    function closeByEscButton(event) {
+        if (event.code === 'Escape') {
+            instance.close();
+        };
+    };
+    
     instance.show();
 } 
 
